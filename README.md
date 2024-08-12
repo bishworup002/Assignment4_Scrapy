@@ -39,6 +39,18 @@ To install the Trip.com Scraper, follow these steps:
      ```
    - If you need to use different database settings, update the `DATABASE` configuration in `settings.py`
 
+   ```
+   DATABASE = {
+    'drivername': 'postgresql',
+    'host': 'localhost',
+    'port': 'your port',
+    'username': 'Your username',
+    'password': 'password',
+    'database': 'database_name'
+}
+
+   ```
+
 ## Configuration
 
 Before running the scraper, check the following configuration files:

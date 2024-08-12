@@ -11,14 +11,14 @@ ITEM_PIPELINES = {
 
 IMAGES_STORE = 'images'
 
-# PostgreSQL Database Configuration
+
 DATABASE = {
     'drivername': 'postgresql',
     'host': 'localhost',
-    'port': '5433',
-    'username': 'postgres',
-    'password': 'p@stgress',
-    'database': 'trip'
+    'port': 'your port',
+    'username': 'Your username',
+    'password': 'Your password',
+    'database': 'database_name'
 }
 
 
