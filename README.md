@@ -1,4 +1,4 @@
-# Trip.com Scraper
+#  Scrapy Assignment
 
 This Scrapy project is designed to scrape hotel data from trip.com, store it in a PostgreSQL database, and download associated images.
 
@@ -37,7 +37,7 @@ To install the Trip.com Scraper, follow these steps:
      ```
      createdb -h localhost -p 5433 -U postgres trip
      ```
-   - If you need to use different database settings, update the `DATABASE` configuration in `settings.py`
+   -  Update the `DATABASE` configuration in `settings.py`
 
    ```
    DATABASE = {
@@ -45,7 +45,7 @@ To install the Trip.com Scraper, follow these steps:
     'host': 'localhost',
     'port': 'your port',
     'username': 'Your username',
-    'password': 'password',
+    'password': 'Your password',
     'database': 'database_name'
    }
    ```
