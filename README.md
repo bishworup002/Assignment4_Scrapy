@@ -47,8 +47,7 @@ To install the Trip.com Scraper, follow these steps:
     'username': 'Your username',
     'password': 'password',
     'database': 'database_name'
-}
-
+   }
    ```
 
 ## Configuration
@@ -79,30 +78,10 @@ To run the Trip.com Scraper, follow these steps:
 
 5. Downloaded images will be stored in the `images` directory
 
-## Troubleshooting
-
-If you encounter any issues:
-
-1. Check the console output for error messages
-2. Verify your database connection settings
-3. Ensure you have the necessary permissions to write to the project directory
-4. If you're getting blocked by the website, try adjusting the `DOWNLOAD_DELAY` in `settings.py`
-
-## Contributing to Trip.com Scraper
-
-To contribute to Trip.com Scraper, follow these steps:
-
-1. Fork this repository
-2. Create a branch: `git checkout -b <branch_name>`
-3. Make your changes and commit them: `git commit -m '<commit_message>'`
-4. Push to the original branch: `git push origin <project_name>/<location>`
-5. Create the pull request
-
-Alternatively, see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## Contact
 
-If you want to contact me, you can reach me at `<your_email@example.com>`.
+If you want to contact me, you can reach me at `<bishworupmollik@gmail.com>`.
 
 ## License
 
