@@ -16,8 +16,8 @@ To install the Trip.com Scraper, follow these steps:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/trip-scraper.git
-   cd trip-scraper
+   git clone https://github.com/bishworup002/Assignment4_Scrapy.git
+  
    ```
 
 2. Create a virtual environment (optional but recommended):
