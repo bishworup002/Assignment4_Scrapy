@@ -2,6 +2,7 @@ import scrapy
 from scrapy_trip.items import TripItem
 import re
 import json
+import random
 
 class TripSpider(scrapy.Spider):
     name = 'trip'
@@ -26,35 +27,34 @@ class TripSpider(scrapy.Spider):
                     # Extract hotel data
                     htlsData = json_data.get('initData', {}).get('htlsData', [])
 
-                    with open("htlsData.json", "w", encoding="utf-8") as json_file:
-                        json.dump(htlsData, json_file, indent=4, ensure_ascii=False)
-                    self.logger.info("htlsData saved successfully to htlsData.json")
-                    
-                    # Extract hotel data
-                    hotels = htlsData.get('inboundCities', [])[0].get('recommendHotels', [])
+                    # Select three random categories
+                    categories = ['inboundCities', 'outboundCities', 'fiveStarHotels', 'cheapHotels', 'hostelHotels']
+                    selected_categories = random.sample(categories, 3)
 
-                    print(hotels)
-                    
-                    for hotel in hotels:
-                        item = TripItem()
-                        item['title'] = hotel.get('hotelName')
-                        item['rating'] = hotel.get('rating')
-                        item['location'] = hotel.get('fullAddress')
-                        item['latitude'] = hotel.get('lat')
-                        item['longitude'] = hotel.get('lon')
-                        item['room_type'] = "Standard"  # Modify as per available data or further scraping logic
-                        item['price'] = hotel.get('prices', {}).get('priceInfos', [{}])[0].get('price')
-                        
-                        # Handling single image URL from 'imgUrl'
-                        base_url = 'https://ak-d.tripcdn.com/images'
-                        image_urls = [base_url + hotel.get('imgUrl', '')]
-                        
-                      
-                        print( image_urls )
-                        
-                        item['image_urls'] = image_urls
-                        
-                        yield item
+                    self.logger.info(f"Selected categories: {selected_categories}")
+
+                    for category in selected_categories:
+                        # Extract hotel data for each selected category
+                        category_data = htlsData.get(category, [])
+                        hotels = category_data[0].get('recommendHotels', []) if category_data else []
+
+                        for hotel in hotels:
+                            item = TripItem()
+                            item['title'] = hotel.get('hotelName')
+                            item['rating'] = hotel.get('rating')
+                            item['location'] = hotel.get('fullAddress')
+                            item['latitude'] = hotel.get('lat')
+                            item['longitude'] = hotel.get('lon')
+                            item['room_type'] = "Standard"  # Modify as per available data or further scraping logic
+                            item['price'] = hotel.get('prices', {}).get('priceInfos', [{}])[0].get('price')
+                            
+                            # Handling single image URL from 'imgUrl'
+                            base_url = 'https://ak-d.tripcdn.com/images'
+                            image_urls = [base_url + hotel.get('imgUrl', '')]
+                            
+                            item['image_urls'] = image_urls
+                            
+                            yield item
 
                 except json.JSONDecodeError as e:
                     self.logger.error(f"Failed to decode JSON: {e}")
